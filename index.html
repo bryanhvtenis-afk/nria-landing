@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es-EC">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Landing page + WhatsApp automático sencillo para negocios locales en Ecuador. Negocios Rentables con IA (NRIA)." />
+  <title>Negocios Rentables con IA — Landing + WhatsApp para tu negocio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #121a2b;
+      --card: #172236;
+      --text: #f3f6fb;
+      --muted: #a8b3c7;
+      --line: rgba(255,255,255,0.08);
+      --green: #2dd4a8;
+      --green-dim: rgba(45,212,168,0.14);
+      --blue: #5b8cff;
+      --radius: 18px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(91,140,255,0.18), transparent 55%),
+                  radial-gradient(900px 500px at -10% 20%, rgba(45,212,168,0.12), transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(11,18,32,0.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 0; gap: 1rem;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 0.7rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .logo {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      display: grid; place-items: center; font-size: 0.75rem; font-weight: 800; color: #041018;
+    }
+    .brand span { color: var(--muted); font-weight: 500; font-size: 0.85rem; margin-left: 0.15rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      border-radius: 999px; padding: 0.85rem 1.25rem; font-weight: 600; font-size: 0.95rem;
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+      border: 1px solid transparent;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--green); color: #042116;
+      box-shadow: 0 10px 28px rgba(45,212,168,0.28);
+    }
+    .btn-primary:hover { background: #4ae0b8; }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border-color: var(--line);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--green-dim); color: var(--green);
+      border: 1px solid rgba(45,212,168,0.25);
+      padding: 0.35rem 0.75rem; border-radius: 999px;
+      font-size: 0.82rem; font-weight: 600; margin-bottom: 1.1rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 5.5vw, 3.35rem);
+      line-height: 1.08; letter-spacing: -0.035em; max-width: 16ch;
+      margin-bottom: 1rem;
+    }
+    .lead {
+      color: var(--muted); font-size: 1.08rem; max-width: 38ch; margin-bottom: 1.6rem;
+    }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.75rem; }
+    .trust {
+      color: var(--muted); font-size: 0.88rem;
+      display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
+    }
+    .trust strong { color: var(--text); font-weight: 600; }
+    .hero-grid {
+      display: grid; gap: 2rem; align-items: center;
+    }
+    @media (min-width: 860px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+    }
+    .preview {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px; padding: 1rem; box-shadow: var(--shadow);
+    }
+    .phone {
+      background: var(--surface); border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .phone-bar {
+      background: #0e1626; padding: 0.7rem 1rem; font-size: 0.82rem; color: var(--muted);
+      display: flex; justify-content: space-between; border-bottom: 1px solid var(--line);
+    }
+    .chat { padding: 1rem; display: grid; gap: 0.7rem; min-height: 280px; }
+    .bubble {
+      max-width: 88%; padding: 0.75rem 0.9rem; border-radius: 14px; font-size: 0.92rem;
+    }
+    .in { background: #1e2a42; border-bottom-left-radius: 4px; }
+    .out {
+      background: rgba(45,212,168,0.18); border: 1px solid rgba(45,212,168,0.25);
+      margin-left: auto; border-bottom-right-radius: 4px; color: #d9fff2;
+    }
+    .meta { font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; }
+    section { padding: 3.25rem 0; }
+    .section-title {
+      font-size: clamp(1.55rem, 3.5vw, 2.1rem);
+      letter-spacing: -0.03em; margin-bottom: 0.6rem;
+    }
+    .section-sub { color: var(--muted); max-width: 52ch; margin-bottom: 1.75rem; }
+    .cards {
+      display: grid; gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 1.25rem 1.2rem;
+    }
+    .icon {
+      width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+      background: var(--green-dim); color: var(--green); font-size: 1.15rem; margin-bottom: 0.9rem;
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.45rem; letter-spacing: -0.02em; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .include {
+      display: grid; gap: 0.85rem;
+    }
+    .include-item {
+      display: grid; grid-template-columns: 28px 1fr; gap: 0.75rem; align-items: start;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+      border-radius: 14px; padding: 0.95rem 1rem;
+    }
+    .check {
+      width: 28px; height: 28px; border-radius: 999px; background: var(--green-dim);
+      color: var(--green); display: grid; place-items: center; font-weight: 700; font-size: 0.9rem;
+    }
+    .include-item strong { display: block; margin-bottom: 0.15rem; }
+    .include-item span { color: var(--muted); font-size: 0.92rem; }
+    .pricing {
+      display: grid; gap: 1rem;
+    }
+    @media (min-width: 720px) {
+      .pricing { grid-template-columns: 1.2fr 0.8fr; }
+    }
+    .price-card {
+      background: linear-gradient(160deg, rgba(45,212,168,0.12), rgba(91,140,255,0.08));
+      border: 1px solid rgba(45,212,168,0.28);
+      border-radius: 22px; padding: 1.5rem;
+    }
+    .price-tag {
+      font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.04em;
+      margin: 0.4rem 0 0.2rem;
+    }
+    .price-tag small { font-size: 1rem; font-weight: 500; color: var(--muted); }
+    .price-note { color: var(--muted); margin-bottom: 1.2rem; }
+    .price-list { list-style: none; display: grid; gap: 0.55rem; margin-bottom: 1.3rem; }
+    .price-list li {
+      display: flex; gap: 0.55rem; color: var(--muted); font-size: 0.95rem;
+    }
+    .price-list li::before { content: "✓"; color: var(--green); font-weight: 700; }
+    .side-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 22px; padding: 1.4rem;
+    }
+    .side-card h3 { margin-bottom: 0.5rem; }
+    .side-card p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+    .faq details {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 0.95rem 1.05rem; margin-bottom: 0.7rem;
+    }
+    .faq summary {
+      cursor: pointer; font-weight: 600; list-style: none;
+      display: flex; justify-content: space-between; gap: 1rem;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--green); font-weight: 700; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq p { color: var(--muted); margin-top: 0.7rem; font-size: 0.95rem; }
+    .cta-band {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 24px; padding: 1.75rem 1.4rem; text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .cta-band h2 { margin-bottom: 0.55rem; letter-spacing: -0.03em; }
+    .cta-band p { color: var(--muted); margin-bottom: 1.2rem; }
+    footer {
+      padding: 2.5rem 0 2rem; color: var(--muted); font-size: 0.88rem;
+      border-top: 1px solid var(--line); margin-top: 1rem;
+    }
+    footer .foot {
+      display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
+      justify-content: space-between; align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="logo">NR</div>
+        Negocios Rentables <span>con IA</span>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20info%20del%20kit%20Landing%20%2B%20WhatsApp%20para%20mi%20negocio">
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Para negocios locales en Ecuador</div>
+          <h1>Tu negocio online en una página + WhatsApp que responde solo</h1>
+          <p class="lead">
+            Armamos una landing clara y un flujo sencillo de WhatsApp para que tus clientes te escriban, reciban respuesta al instante y agenden o pregunten sin que estés pegado al celular.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20el%20kit%20Landing%20%2B%20WhatsApp.%20Mi%20negocio%20es%3A">
+              Quiero mi kit
+            </a>
+            <a class="btn btn-ghost" href="#incluye">Ver qué incluye</a>
+          </div>
+          <div class="trust">
+            <span><strong>Setup desde $149</strong> · listo para vender</span>
+            <span><strong>Sin app rara:</strong> WhatsApp Business</span>
+            <span><strong>Hecho para</strong> salones, academias y comercios</span>
+          </div>
+        </div>
+        <div class="preview" aria-hidden="true">
+          <div class="phone">
+            <div class="phone-bar"><span>WhatsApp Business</span><span>ahora</span></div>
+            <div class="chat">
+              <div class="bubble in">
+                Hola, ¿atienden mañana en la tarde?
+                <div class="meta">Cliente · 10:12</div>
+              </div>
+              <div class="bubble out">
+                ¡Hola! Gracias por escribir. Sí atendemos. Dime tu zona y te paso horarios y precios.
+                <div class="meta">Auto-respuesta · 10:12</div>
+              </div>
+              <div class="bubble out">
+                Opciones rápidas: 📍 Ubicación · 💵 Precios · 📅 Agendar
+                <div class="meta">Menú rápido</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="wrap">
+        <h2 class="section-title">Tres cosas que cambian tu día a día</h2>
+        <p class="section-sub">Nada de software complicado. Solo presencia clara en internet y un WhatsApp que no deja colgado al cliente.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">1</div>
+            <h3>Más consultas, menos “te escribo luego”</h3>
+            <p>Una página simple con tu oferta, fotos y botón a WhatsApp. El cliente llega, entiende y te escribe en un toque.</p>
+          </article>
+          <article class="card">
+            <div class="icon">2</div>
+            <h3>Respuesta al instante, aunque estés ocupado</h3>
+            <p>Mensaje de bienvenida + respuestas rápidas para horarios, precios y ubicación. Tú retomas la conversación cuando puedas.</p>
+          </article>
+          <article class="card">
+            <div class="icon">3</div>
+            <h3>Hecho para Ecuador</h3>
+            <p>Copy en español claro, precios en USD, y flujos pensados para salones, academias, tiendas y servicios del barrio o del valle.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="incluye">
+      <div class="wrap">
+        <h2 class="section-title">Qué incluye el kit</h2>
+        <p class="section-sub">Todo lo necesario para empezar a captar clientes por WhatsApp sin complicarte.</p>
+        <div class="include">
+          <div class="include-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Landing de 1 página</strong>
+              <span>Hero, beneficios, oferta, FAQ corta y CTAs a tu WhatsApp. Diseño minimalista, móvil primero.</span>
+            </div>
+          </div>
+          <div class="include-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>WhatsApp Business listo para vender</strong>
+              <span>Mensaje de bienvenida, respuestas rápidas, menú de FAQ y guion de primer contacto.</span>
+            </div>
+          </div>
+          <div class="include-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Guion de prospección 7 días</strong>
+              <span>Textos para escribir a negocios locales y ofrecer el servicio (o para que tú lo uses con tu propio negocio).</span>
+            </div>
+          </div>
+          <div class="include-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>One-pager comercial</strong>
+              <span>PDF/MD “qué incluye” para enviar a prospectos por WhatsApp o correo.</span>
+            </div>
+          </div>
+          <div class="include-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Entrega y ajuste inicial</strong>
+              <span>Configuramos textos con tu nombre, zona y oferta. Sin API paga de Meta: funciona con WhatsApp Business App.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="precios">
+      <div class="wrap">
+        <h2 class="section-title">Precios simples</h2>
+        <p class="section-sub">Pensados para PYMES y emprendedores en Ecuador. Sin letra chica rara.</p>
+        <div class="pricing">
+          <div class="price-card">
+            <div class="eyebrow">Setup único</div>
+            <div class="price-tag">desde $149 <small>USD</small></div>
+            <p class="price-note">Landing + configuración WhatsApp + guiones. Ideal para arrancar.</p>
+            <ul class="price-list">
+              <li>Landing de 1 página publicada</li>
+              <li>CTAs a tu número de WhatsApp</li>
+              <li>Bienvenida + FAQ + respuestas rápidas</li>
+              <li>One-pager y guion de 7 días</li>
+              <li>1 ronda de ajustes de copy</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20me%20interesa%20el%20setup%20desde%20%24149%20%28Landing%20%2B%20WhatsApp%29">
+              Pedir cotización por WhatsApp
+            </a>
+          </div>
+          <div class="side-card">
+            <h3>Mantenimiento opcional</h3>
+            <p>Si quieres que actualicemos textos, fotos o menús de WhatsApp cada mes.</p>
+            <div class="price-tag" style="font-size:2rem">$29–49 <small>/ mes</small></div>
+            <p class="price-note">Según cuántos cambios necesites. Se puede cancelar cuando quieras.</p>
+            <a class="btn btn-ghost" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20saber%20del%20mantenimiento%20mensual%20%2829-49%20USD%29">
+              Consultar plan mensual
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="wrap">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+        <p class="section-sub">Lo que más preguntan antes de empezar.</p>
+        <details>
+          <summary>¿Necesito pagar la API de WhatsApp / Meta?</summary>
+          <p>No para este kit. Trabajamos con WhatsApp Business App: mensaje de bienvenida, etiquetas y respuestas rápidas. Si más adelante quieres un chatbot con API, se cotiza aparte.</p>
+        </details>
+        <details>
+          <summary>¿En cuánto tiempo queda listo?</summary>
+          <p>En la mayoría de casos, en unos días una vez tengamos tu logo (si hay), fotos, horarios, precios y el número de WhatsApp del negocio.</p>
+        </details>
+        <details>
+          <summary>¿Sirve si ya tengo Instagram o Facebook?</summary>
+          <p>Sí. La landing concentra la oferta y manda el tráfico a WhatsApp. Instagram y Facebook siguen siendo canales; esto ordena la conversión.</p>
+        </details>
+        <details>
+          <summary>¿Qué negocios encajan mejor?</summary>
+          <p>Salones y estética, academias y clases, clínicas pequeñas, tiendas, talleres y servicios locales que cierran ventas por WhatsApp.</p>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta-band">
+          <h2>¿Listo para tener tu landing + WhatsApp ordenado?</h2>
+          <p>Escríbeme con el nombre de tu negocio y tu ciudad. Te respondo con los siguientes pasos.</p>
+          <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%20%28NRIA%29%2C%20quiero%20armar%20mi%20Landing%20%2B%20WhatsApp.%20Negocio%3A%20%7Bnombre%7D%20%7C%20Ciudad%3A%20%7Bciudad%7D">
+            Hablar por WhatsApp · +593 96 901 3915
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong style="color:var(--text)">Negocios Rentables con IA (NRIA)</strong><br />
+        Bryan Vizuete · Ecuador
+      </div>
+      <div>
+        <a href="https://wa.me/593969013915">WhatsApp</a> ·
+        <a href="mailto:bryanhvtenis@gmail.com">bryanhvtenis@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
