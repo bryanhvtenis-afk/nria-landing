@@ -3,33 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Landing page + WhatsApp automático sencillo para negocios locales en Ecuador. Negocios Rentables con IA (NRIA)." />
-  <title>Negocios Rentables con IA — Landing + WhatsApp para tu negocio</title>
+  <meta name="description" content="Captia — Captura citas. Cierra por WhatsApp. Landing + WhatsApp para negocios locales en Ecuador, desde $149. Bryan Vizuete." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="Captia — Captura citas. Cierra por WhatsApp." />
+  <meta property="og:description" content="Captia ayuda a negocios locales en Ecuador a capturar citas y cerrar por WhatsApp. Landing + WhatsApp desde $149." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_EC" />
+  <title>Captia — Captura citas. Cierra por WhatsApp.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF6A00'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='36' font-weight='700' fill='%23111111'%3EC%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b1220;
-      --surface: #121a2b;
-      --card: #172236;
-      --text: #f3f6fb;
-      --muted: #a8b3c7;
-      --line: rgba(255,255,255,0.08);
-      --green: #2dd4a8;
-      --green-dim: rgba(45,212,168,0.14);
-      --blue: #5b8cff;
+      --bg: #000000;
+      --surface: #111111;
+      --card: #161616;
+      --text: #ffffff;
+      --muted: #c9c9c9;
+      --line: rgba(255,255,255,0.10);
+      --orange: #ff6a00;
+      --orange-soft: #ffb347;
+      --orange-dim: rgba(255,106,0,0.14);
+      --orange-line: rgba(255,106,0,0.32);
+      --ink: #111111;
       --radius: 18px;
-      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --shadow: 0 20px 50px rgba(0,0,0,0.45);
       --max: 1080px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: "DM Sans", system-ui, sans-serif;
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(91,140,255,0.18), transparent 55%),
-                  radial-gradient(900px 500px at -10% 20%, rgba(45,212,168,0.12), transparent 50%),
-                  var(--bg);
+      background:
+        radial-gradient(1100px 560px at 88% -8%, rgba(255,106,0,0.22), transparent 55%),
+        radial-gradient(780px 460px at -12% 18%, rgba(255,179,71,0.10), transparent 52%),
+        var(--bg);
       color: var(--text);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
@@ -40,46 +49,54 @@
     .nav {
       position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(14px);
-      background: rgba(11,18,32,0.75);
+      background: rgba(0,0,0,0.78);
       border-bottom: 1px solid var(--line);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0.9rem 0; gap: 1rem;
+      padding: 0.9rem 0; gap: 0.75rem;
     }
     .brand {
-      display: flex; align-items: center; gap: 0.7rem; font-weight: 700; letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 0.7rem;
+      font-weight: 800; letter-spacing: -0.03em; font-size: 1.05rem;
+      min-width: 0;
     }
     .logo {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--green), var(--blue));
-      display: grid; place-items: center; font-size: 0.75rem; font-weight: 800; color: #041018;
+      width: 36px; height: 36px; border-radius: 10px; flex: 0 0 auto;
+      background: var(--orange);
+      display: grid; place-items: center;
+      font-size: 1.05rem; font-weight: 800; color: var(--ink);
     }
-    .brand span { color: var(--muted); font-weight: 500; font-size: 0.85rem; margin-left: 0.15rem; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
-      border-radius: 999px; padding: 0.85rem 1.25rem; font-weight: 600; font-size: 0.95rem;
+      border-radius: 999px; padding: 0.85rem 1.25rem; font-weight: 700; font-size: 0.95rem;
       transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
-      border: 1px solid transparent;
+      border: 1px solid transparent; text-align: center; line-height: 1.25;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--green); color: #042116;
-      box-shadow: 0 10px 28px rgba(45,212,168,0.28);
+    .btn:focus-visible {
+      outline: 2px solid var(--orange-soft);
+      outline-offset: 3px;
     }
-    .btn-primary:hover { background: #4ae0b8; }
+    .btn-primary {
+      background: var(--orange); color: var(--ink);
+      box-shadow: 0 10px 28px rgba(255,106,0,0.28);
+    }
+    .btn-primary:hover { background: #ff8124; }
     .btn-ghost {
       background: transparent; color: var(--text);
       border-color: var(--line);
     }
-    .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.05); }
+    .nav .btn { padding: 0.7rem 1rem; white-space: nowrap; }
+    .btn-short { display: none; }
     .hero { padding: 3.5rem 0 2.5rem; }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 0.45rem;
-      background: var(--green-dim); color: var(--green);
-      border: 1px solid rgba(45,212,168,0.25);
+      background: var(--orange-dim); color: var(--orange-soft);
+      border: 1px solid var(--orange-line);
       padding: 0.35rem 0.75rem; border-radius: 999px;
-      font-size: 0.82rem; font-weight: 600; margin-bottom: 1.1rem;
+      font-size: 0.82rem; font-weight: 700; margin-bottom: 1.1rem;
     }
     h1 {
       font-size: clamp(2rem, 5.5vw, 3.35rem);
@@ -87,7 +104,7 @@
       margin-bottom: 1rem;
     }
     .lead {
-      color: var(--muted); font-size: 1.08rem; max-width: 38ch; margin-bottom: 1.6rem;
+      color: var(--muted); font-size: 1.08rem; max-width: 42ch; margin-bottom: 1.6rem;
     }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.75rem; }
     .trust {
@@ -111,17 +128,17 @@
       border: 1px solid var(--line);
     }
     .phone-bar {
-      background: #0e1626; padding: 0.7rem 1rem; font-size: 0.82rem; color: var(--muted);
+      background: #0a0a0a; padding: 0.7rem 1rem; font-size: 0.82rem; color: var(--muted);
       display: flex; justify-content: space-between; border-bottom: 1px solid var(--line);
     }
     .chat { padding: 1rem; display: grid; gap: 0.7rem; min-height: 280px; }
     .bubble {
       max-width: 88%; padding: 0.75rem 0.9rem; border-radius: 14px; font-size: 0.92rem;
     }
-    .in { background: #1e2a42; border-bottom-left-radius: 4px; }
+    .in { background: #222222; border-bottom-left-radius: 4px; }
     .out {
-      background: rgba(45,212,168,0.18); border: 1px solid rgba(45,212,168,0.25);
-      margin-left: auto; border-bottom-right-radius: 4px; color: #d9fff2;
+      background: rgba(255,106,0,0.16); border: 1px solid rgba(255,106,0,0.32);
+      margin-left: auto; border-bottom-right-radius: 4px; color: #fff4ea;
     }
     .meta { font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; }
     section { padding: 3.25rem 0; }
@@ -143,33 +160,30 @@
     }
     .icon {
       width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
-      background: var(--green-dim); color: var(--green); font-size: 1.15rem; margin-bottom: 0.9rem;
+      background: var(--orange-dim); color: var(--orange); font-size: 1.15rem; margin-bottom: 0.9rem;
+      font-weight: 700;
     }
     .card h3 { font-size: 1.1rem; margin-bottom: 0.45rem; letter-spacing: -0.02em; }
     .card p { color: var(--muted); font-size: 0.95rem; }
-    .include {
-      display: grid; gap: 0.85rem;
-    }
+    .include { display: grid; gap: 0.85rem; }
     .include-item {
       display: grid; grid-template-columns: 28px 1fr; gap: 0.75rem; align-items: start;
       background: rgba(255,255,255,0.03); border: 1px solid var(--line);
       border-radius: 14px; padding: 0.95rem 1rem;
     }
     .check {
-      width: 28px; height: 28px; border-radius: 999px; background: var(--green-dim);
-      color: var(--green); display: grid; place-items: center; font-weight: 700; font-size: 0.9rem;
+      width: 28px; height: 28px; border-radius: 999px; background: var(--orange-dim);
+      color: var(--orange); display: grid; place-items: center; font-weight: 700; font-size: 0.9rem;
     }
     .include-item strong { display: block; margin-bottom: 0.15rem; }
     .include-item span { color: var(--muted); font-size: 0.92rem; }
-    .pricing {
-      display: grid; gap: 1rem;
-    }
+    .pricing { display: grid; gap: 1rem; }
     @media (min-width: 720px) {
       .pricing { grid-template-columns: 1.2fr 0.8fr; }
     }
     .price-card {
-      background: linear-gradient(160deg, rgba(45,212,168,0.12), rgba(91,140,255,0.08));
-      border: 1px solid rgba(45,212,168,0.28);
+      background: linear-gradient(160deg, rgba(255,106,0,0.16), rgba(255,179,71,0.06));
+      border: 1px solid var(--orange-line);
       border-radius: 22px; padding: 1.5rem;
     }
     .price-tag {
@@ -182,7 +196,7 @@
     .price-list li {
       display: flex; gap: 0.55rem; color: var(--muted); font-size: 0.95rem;
     }
-    .price-list li::before { content: "✓"; color: var(--green); font-weight: 700; }
+    .price-list li::before { content: "✓"; color: var(--orange); font-weight: 700; }
     .side-card {
       background: var(--card); border: 1px solid var(--line);
       border-radius: 22px; padding: 1.4rem;
@@ -198,7 +212,7 @@
       display: flex; justify-content: space-between; gap: 1rem;
     }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; color: var(--green); font-weight: 700; }
+    .faq summary::after { content: "+"; color: var(--orange); font-weight: 700; }
     .faq details[open] summary::after { content: "–"; }
     .faq p { color: var(--muted); margin-top: 0.7rem; font-size: 0.95rem; }
     .cta-band {
@@ -208,6 +222,7 @@
     }
     .cta-band h2 { margin-bottom: 0.55rem; letter-spacing: -0.03em; }
     .cta-band p { color: var(--muted); margin-bottom: 1.2rem; }
+    .cta-band .btn { max-width: 100%; }
     footer {
       padding: 2.5rem 0 2rem; color: var(--muted); font-size: 0.88rem;
       border-top: 1px solid var(--line); margin-top: 1rem;
@@ -216,32 +231,42 @@
       display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
       justify-content: space-between; align-items: center;
     }
+    footer a { overflow-wrap: anywhere; }
+    footer a:hover { color: var(--orange-soft); }
+    footer strong { color: var(--text); }
+    @media (max-width: 420px) {
+      .nav .btn { font-size: 0.82rem; padding: 0.62rem 0.8rem; }
+      .btn-long { display: none; }
+      .btn-short { display: inline; }
+      h1 { max-width: 14ch; }
+    }
   </style>
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
-      <div class="brand">
-        <div class="logo">NR</div>
-        Negocios Rentables <span>con IA</span>
-      </div>
-      <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20info%20del%20kit%20Landing%20%2B%20WhatsApp%20para%20mi%20negocio">
-        Escribir por WhatsApp
+      <a class="brand" href="#inicio">
+        <div class="logo" aria-hidden="true">C</div>
+        Captia
+      </a>
+      <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20info%20de%20Captia%20para%20mi%20negocio">
+        <span class="btn-long">Escribir por WhatsApp</span>
+        <span class="btn-short">WhatsApp</span>
       </a>
     </div>
   </header>
 
-  <main>
+  <main id="inicio">
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Para negocios locales en Ecuador</div>
-          <h1>Tu negocio online en una página + WhatsApp que responde solo</h1>
+          <h1>Captura citas. Cierra por WhatsApp.</h1>
           <p class="lead">
-            Armamos una landing clara y un flujo sencillo de WhatsApp para que tus clientes te escriban, reciban respuesta al instante y agenden o pregunten sin que estés pegado al celular.
+            Captia arma una landing clara y un flujo sencillo de WhatsApp para que tus clientes te escriban, reciban respuesta al instante y agenden sin que estés pegado al celular.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20el%20kit%20Landing%20%2B%20WhatsApp.%20Mi%20negocio%20es%3A">
+            <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20el%20kit%20Landing%20%2B%20WhatsApp%20de%20Captia.%20Mi%20negocio%20es%3A">
               Quiero mi kit
             </a>
             <a class="btn btn-ghost" href="#incluye">Ver qué incluye</a>
@@ -301,7 +326,7 @@
     <section id="incluye">
       <div class="wrap">
         <h2 class="section-title">Qué incluye el kit</h2>
-        <p class="section-sub">Todo lo necesario para empezar a captar clientes por WhatsApp sin complicarte.</p>
+        <p class="section-sub">Todo lo necesario para empezar a captar citas y clientes por WhatsApp sin complicarte.</p>
         <div class="include">
           <div class="include-item">
             <div class="check">✓</div>
@@ -358,7 +383,7 @@
               <li>One-pager y guion de 7 días</li>
               <li>1 ronda de ajustes de copy</li>
             </ul>
-            <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20me%20interesa%20el%20setup%20desde%20%24149%20%28Landing%20%2B%20WhatsApp%29">
+            <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20me%20interesa%20el%20setup%20desde%20%24149%20%28Landing%20%2B%20WhatsApp%29%20de%20Captia">
               Pedir cotización por WhatsApp
             </a>
           </div>
@@ -367,7 +392,7 @@
             <p>Si quieres que actualicemos textos, fotos o menús de WhatsApp cada mes.</p>
             <div class="price-tag" style="font-size:2rem">$29–49 <small>/ mes</small></div>
             <p class="price-note">Según cuántos cambios necesites. Se puede cancelar cuando quieras.</p>
-            <a class="btn btn-ghost" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20saber%20del%20mantenimiento%20mensual%20%2829-49%20USD%29">
+            <a class="btn btn-ghost" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20saber%20del%20mantenimiento%20mensual%20%2829-49%20USD%29%20de%20Captia">
               Consultar plan mensual
             </a>
           </div>
@@ -401,9 +426,9 @@
     <section>
       <div class="wrap">
         <div class="cta-band">
-          <h2>¿Listo para tener tu landing + WhatsApp ordenado?</h2>
+          <h2>¿Listo para capturar citas y cerrar por WhatsApp?</h2>
           <p>Escríbeme con el nombre de tu negocio y tu ciudad. Te respondo con los siguientes pasos.</p>
-          <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%20%28NRIA%29%2C%20quiero%20armar%20mi%20Landing%20%2B%20WhatsApp.%20Negocio%3A%20%7Bnombre%7D%20%7C%20Ciudad%3A%20%7Bciudad%7D">
+          <a class="btn btn-primary" href="https://wa.me/593969013915?text=Hola%20Bryan%2C%20quiero%20armar%20mi%20Landing%20%2B%20WhatsApp%20con%20Captia.%20Negocio%3A%20%7Bnombre%7D%20%7C%20Ciudad%3A%20%7Bciudad%7D">
             Hablar por WhatsApp · +593 96 901 3915
           </a>
         </div>
@@ -414,12 +439,12 @@
   <footer>
     <div class="wrap foot">
       <div>
-        <strong style="color:var(--text)">Negocios Rentables con IA (NRIA)</strong><br />
-        Bryan Vizuete · Ecuador
+        <strong>Captia</strong> · Bryan Vizuete · Ecuador
       </div>
       <div>
-        <a href="https://wa.me/593969013915">WhatsApp</a> ·
-        <a href="mailto:bryanhvtenis@gmail.com">bryanhvtenis@gmail.com</a>
+        <a href="https://wa.me/593969013915">WhatsApp · +593 96 901 3915</a>
+        ·
+        <a href="mailto:vizuetebryan945@gmail.com">vizuetebryan945@gmail.com</a>
       </div>
     </div>
   </footer>
